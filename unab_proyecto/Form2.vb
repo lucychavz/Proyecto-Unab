@@ -1,8 +1,10 @@
 ﻿Imports System.Drawing.Printing
 Public Class Form2
-    Dim WithEvents PD As New PrintDocument
-    Dim PPD As New PrintPreviewDialog
-    Dim longpaper As Integer
+
+    'Variables que se ocupan en todo el codigo en general
+    Dim WithEvents PD As New PrintDocument ' Generar el documento pdf
+    Dim PPD As New PrintPreviewDialog  ' visualizacion de factura
+    Dim longpaper As Integer ' Longitud
     Dim item As Integer
     Dim ReciptID As Integer
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load 'Indicador que empiece desde cero categoria,tipo de documento y producto y muestre fecha del sistema
@@ -31,7 +33,7 @@ Public Class Form2
         End If
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        TextBox1.Clear()
+        TextBox1.Clear() ' Limpia el texto
 
     End Sub
 
@@ -282,6 +284,7 @@ Public Class Form2
 
 
     Private Sub PD_Printpage(sender As Object, e As PrintPageEventArgs) Handles PD.PrintPage
+        'TIpo de fuente 
         Dim f8 As New Font("Calibri", 8, FontStyle.Regular)
         Dim f10 As New Font("Calibri", 10, FontStyle.Regular)
         Dim f10b As New Font("Calibri", 10, FontStyle.Bold)
@@ -291,6 +294,7 @@ Public Class Form2
         Dim centermargin As Integer = PD.DefaultPageSettings.PaperSize.Width / 2
         Dim rigthmargin As Integer = PD.DefaultPageSettings.PaperSize.Width
 
+        'Alinar columnas DataGridView
         DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnMode.AllCells
 
